@@ -1,8 +1,8 @@
 <template>
   <q-page class="flex flex-center">
-    <h3>{{ question.text}}</h3>
+    <h3 >{{ question.text}}</h3>
     <image-question :imgUrl="question.imgQuestion"> </image-question>
-    <options v-for="option in question.options" :key="option.id" :option="option"> </options>
+    <options :options="question.options"> </options>
   </q-page>
 </template>
 
@@ -30,9 +30,26 @@ export default {
     ...mapGetters({
       characters: 'character/allCharacters',
       question: 'question/getQuestion',
+      correctAnswer: 'answer/correctAnsewer',
+      incorrectAnswer: 'answer/incorrectAnsewer',
     }),
-    imgQuestion() {
-      return this.characters[this.seed].image;
+  },
+  watch: {
+    correctAnswer() {
+      return this.$q.notify({
+        message: 'Você acertou',
+        timeout: 1000,
+        type: 'positive',
+        position: 'top-right',
+      });
+    },
+    incorrectAnswer() {
+      return this.$q.notify({
+        message: 'Você Errou',
+        timeout: 1000,
+        type: 'negative',
+        position: 'top-right',
+      });
     },
   },
   methods: {

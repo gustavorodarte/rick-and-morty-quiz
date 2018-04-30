@@ -62,6 +62,8 @@ module.exports = function (ctx) {
         'QItemMain',
         'QItemSide',
         'QRadio',
+        'QField',
+        'QOptionGroup',
       ],
       directives: [
         'Ripple'

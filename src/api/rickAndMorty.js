@@ -8,9 +8,9 @@ export default {
   character: {
     async getAll(url = characterBaseURL, acumulator = []) {
       const response = await axios.get(url);
-      const characters = response.result;
-      if (response.info.next) {
-        return this.getAll(response.info.next, acumulator.concat(characters));
+      const characters = response.data.results;
+      if (response.data.info.next) {
+        return this.getAll(response.data.info.next, acumulator.concat(characters));
       }
       return acumulator.concat(characters);
     },

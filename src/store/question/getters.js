@@ -1,8 +1,4 @@
 
-export const imgQuestion = state => state.imgQuestion;
+export const getQuestion = state => state.question;
 
-export const question = state => state.question;
-
-export const answer = state => state.answer;
-
-export const options = state => state.options;
+export const teste = some => some.thing;

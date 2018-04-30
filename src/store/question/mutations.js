@@ -1,12 +1,7 @@
 
-export const setImgQuestion = (state, imgUrl) => {
-  state.imgQuestion = imgUrl;
+export const setQuestion = (state, question) => {
+  state.question = question;
 };
 
-export const setAnswer = (state, answer) => {
-  state.answer = answer;
-};
+export const teste = some => some.thing;
 
-export const setOptions = (state, options) => {
-  state.options = options;
-};

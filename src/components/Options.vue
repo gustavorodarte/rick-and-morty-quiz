@@ -1,9 +1,6 @@
 <template>
   <div>
-    <q-field
-    helper="Pick one Name"
-    label="Options"
-   >
+    <q-field>
     <q-option-group
       type="radio"
       color="secondary"
@@ -36,6 +33,7 @@ export default {
 };
 </script>
 
-<style>
-
+<style lang="stylus">
+  .q-option-label
+    font-size 2em
 </style>

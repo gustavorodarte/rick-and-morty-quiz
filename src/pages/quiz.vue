@@ -1,13 +1,24 @@
 <template>
-  <q-page class="flex flex-center">
-    <h3 >{{ question.text}}</h3>
-    <image-question :imgUrl="question.imgQuestion"> </image-question>
-    <options :options="question.options"> </options>
+  <q-page class="flex flex-center column">
+    <q-card inline class="bigger q-ma-sm" color="tertiary" text-color="secondary">
+      <q-card-media overlay-position="full">
+        <image-question :imgUrl="question.imgQuestion"> </image-question>
+      </q-card-media>
+      <q-card-title class="relative-position">
+        <h4>{{ question.text}}</h4>
+      </q-card-title>
+      <q-card-main>
+        <options :options="question.options"> </options>
+      </q-card-main>
+      <q-card-separator />
+    </q-card>
   </q-page>
 </template>
 
-<style>
-
+<style lang="stylus">
+  h4
+    font-size 1.3em
+    margin  0
 </style>
 
 <script>

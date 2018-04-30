@@ -1,9 +1,8 @@
 export const someAction = () => {};
 
-export const checkAnswer = async ({ commit, rootGetters }, answer) => {
+export const checkAnswer = async ({ commit, dispatch, rootGetters }, answer) => {
   const question = rootGetters['question/getQuestion'];
 
-  console.log(question.answer);
   if (question.answer === answer.id) {
     const newAnswer = {
       correct: true,
@@ -19,4 +18,5 @@ export const checkAnswer = async ({ commit, rootGetters }, answer) => {
     };
     commit('incrementIncorrectAnswer', newAnswer);
   }
+  await dispatch('question/generateQuestion', null, { root: true });
 };

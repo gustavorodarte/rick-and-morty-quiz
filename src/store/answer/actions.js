@@ -3,7 +3,7 @@ export const someAction = () => {};
 export const checkAnswer = async ({ commit, dispatch, rootGetters }, answer) => {
   const question = rootGetters['question/getQuestion'];
 
-  if (question.answer === answer.id) {
+  if (question.answer === answer) {
     const newAnswer = {
       correct: true,
       user: answer.name,

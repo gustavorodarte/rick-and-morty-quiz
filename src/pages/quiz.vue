@@ -1,28 +1,38 @@
 <template>
   <q-page class="flex flex-center column">
-    <q-card inline class="bigger q-ma-sm" color="tertiary" text-color="secondary">
-      <q-card-media overlay-position="full">
+     <q-card inline class="q-ma-sm" color="tertiary" text-color="secondary">
+      <q-card-media overlay-position="top">
         <image-question :imgUrl="question.imgQuestion"> </image-question>
+        <q-card-title slot="overlay">
+        <span slot="subtitle" class="timer">{{ timer }}</span>
+        </q-card-title>
       </q-card-media>
-      <q-card-title class="relative-position">
-        <h4>{{ question.text}}</h4>
-      </q-card-title>
       <q-card-main>
+        <h4>{{ question.text}}</h4>
         <options :options="question.options"> </options>
       </q-card-main>
-      <q-card-separator />
     </q-card>
   </q-page>
 </template>
 
 <style lang="stylus">
+  .q-card-media-overlay
+    color: #fff
+    background: none
+  .q-card
+    max-width 300px
   h4
-    font-size 1.3em
+    font-size 2em
     margin  0
+  .timer
+    font-font-family RickAndMortyTitle
+    font-size 5em
+    float right
+    color #7CFC00
 </style>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
+import { mapGetters, mapActions, mapMutations } from 'vuex';
 import ImageQuestion from './../components/ImageQuestion';
 import Options from './../components/Options';
 
@@ -43,6 +53,7 @@ export default {
       question: 'question/getQuestion',
       correctAnswer: 'answer/correctAnsewer',
       incorrectAnswer: 'answer/incorrectAnsewer',
+      timer: 'game/getTimer',
     }),
   },
   watch: {
@@ -66,6 +77,12 @@ export default {
   methods: {
     ...mapActions(['question/generateQuestion',
     ]),
+
+    ...mapMutations(['game/decreaseTimer']),
+
+    setTimer() {
+      setInterval(this.$store.commit('game/decreaseTimer'), 1000);
+    },
   },
   created() {
     this.$store.dispatch('question/generateQuestion');

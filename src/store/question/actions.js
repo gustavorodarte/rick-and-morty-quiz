@@ -57,6 +57,7 @@ export const generateQuestion = async ({ commit, dispatch, rootGetters }) => {
 
   const newQuestion = getQuestion(generateRandomQuestionType(), characters);
   commit('setQuestion', newQuestion);
+  setInterval(commit('game/decreaseTimer', null, { root: true }), 1000);
 };
 
 export const teste = some => some.thing;

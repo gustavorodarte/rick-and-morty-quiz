@@ -6,17 +6,19 @@ export const checkAnswer = async ({ commit, dispatch, rootGetters }, answer) => 
   if (question.answer === answer) {
     const newAnswer = {
       correct: true,
-      user: answer.name,
-      expect: question.answer.name,
+      user: answer,
+      expect: question.answer,
     };
     commit('incrementCorrectAnswer', newAnswer);
   } else {
     const newAnswer = {
       correct: false,
-      user: answer.name,
-      expect: question.answer.name,
+      user: answer,
+      expect: question.answer,
     };
+    commit('game/loseLifes', null, { root: true });
     commit('incrementIncorrectAnswer', newAnswer);
   }
+  commit('game/resetTimer', null, { root: true });
   await dispatch('question/generateQuestion', null, { root: true });
 };

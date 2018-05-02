@@ -6,7 +6,7 @@ module.exports = function (ctx) {
     // app plugins (/src/plugins)
     plugins: [
       'i18n',
-      'axios'
+      'axios',
     ],
     css: [
       'app.styl'
@@ -70,13 +70,17 @@ module.exports = function (ctx) {
         'QCardMedia',
         'QCardSeparator',
         'QCardActions',
+        'QAjaxBar',
+        'QInnerLoading',
+        'QSpinnerGears',
       ],
       directives: [
         'Ripple'
       ],
       // Quasar plugins
       plugins: [
-        'Notify'
+        'Notify',
+        'Loading',
       ]
     },
     // animations: 'all' --- includes all animations
